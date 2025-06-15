@@ -1,0 +1,529 @@
+/* Import Cubano font (replace with actual CDN link if available and licensed) */
+/* For testing purposes, you might find Cubano on platforms like Google Fonts (if available) or by self-hosting. */
+/* As a placeholder: */
+@import url('https://fonts.googleapis.com/css2?family=Cubano&display=swap'); /* This is a placeholder URL. Cubano is not on Google Fonts. You would need to host it or use a service like Adobe Fonts. */
+
+
+/* Basic Resets & Global Styles */
+:root {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  /* Background with coffee bean pattern from image_142191.png */
+  background-color: #D4AF8B; /* A prominent light brown from the image */
+  background-image: url('https://placehold.co/1200x800/D4AF8B/D4AF8B?text=coffee+beans+pattern'); /* Placeholder for coffee bean pattern */
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat; /* The pattern looks repeatable */
+  color: #4A4A4A; /* General text color */
+}
+
+/* Main App Container */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* Stack header and content vertically */
+  align-items: center; /* Center horizontally */
+  padding: 1rem; /* Overall padding */
+}
+
+/* Header Styles - Integrated into the background */
+.app-header {
+  width: 100%;
+  padding: 1.5rem;
+  text-align: center;
+  color: #FFFFFF; /* White text for main titles */
+  margin-bottom: 2rem; /* Space below header content before main wrapper */
+  position: relative; /* For positioning the logo */
+}
+
+.header-title {
+  font-family: 'Cubano', sans-serif; /* Applied Cubano font here */
+  font-size: 3rem; /* Larger font for main title */
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.header-subtitle {
+  font-size: 1.875rem;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.cafe-logo {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  text-align: right;
+}
+
+@media (min-width: 768px) {
+  .app-header {
+    padding-top: 2rem;
+    padding-bottom: 0; /* Remove bottom padding as titles are higher */
+    margin-bottom: 0; /* Remove margin as main content wrapper has its own top margin */
+  }
+  .header-title {
+    font-size: 3rem; /* Even larger on desktop */
+  }
+  .header-subtitle {
+    font-size: 2rem;
+  }
+  .cafe-logo {
+    top: 2rem;
+    right: 2rem;
+  }
+}
+
+.cafe-logo-main {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 2rem; /* Larger for "CAFÉ NAHUM" */
+  font-weight: 700;
+  color: #7A4B29; /* Dark brown from the image */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.cafe-logo-sub {
+  font-size: 0.875rem;
+  font-style: italic;
+  color: #7A4B29;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Main Content Wrapper - Holds Admin Panel and User Log */
+.main-content-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack vertically on small screens */
+  width: 100%;
+  max-width: 1200px; /* Max width to keep content contained */
+  margin-top: 2rem; /* Space below the header titles */
+}
+
+@media (min-width: 768px) { /* Medium screens and up */
+  .main-content-wrapper {
+    flex-direction: row; /* Arrange items in a row on larger screens */
+    align-items: flex-start; /* Align items to the top */
+    justify-content: center; /* Center horizontally */
+    margin-top: 0; /* Adjusted by body padding/header height */
+  }
+}
+
+/* Admin Panel Styles */
+.admin-panel {
+  width: 100%; /* Default to full width on mobile */
+  background-color: #CC6633; /* Darker orange background */
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  border-radius: 0.75rem;
+  margin-bottom: 2rem; /* Space below admin panel on mobile */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border: 2px solid #A0522D; /* Darker brown border */
+}
+
+@media (min-width: 768px) {
+  .admin-panel {
+    width: 33.333333%; /* Approx. 1/3 width */
+    margin-bottom: 0; /* No bottom margin when in row */
+    margin-right: 2rem; /* Space between admin and user log */
+  }
+}
+
+.admin-panel h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #A0522D;
+  padding-bottom: 0.5rem;
+}
+
+.admin-id-display {
+  font-size: 0.875rem;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+  word-break: break-all;
+}
+
+.admin-id-span {
+  font-family: monospace;
+  background-color: #A0522D;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  color: #E0E0E0;
+}
+
+.message-box {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.message-box.error {
+  background-color: #EF4444;
+  color: #FFFFFF;
+}
+
+.message-box.success {
+  background-color: #4CAF50;
+  color: #FFFFFF;
+}
+
+/* Admin Panel Section Blocks (Add User, Remove User, Remove All) */
+.admin-section-block {
+  background-color: #B55C29; /* Slightly lighter orange */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.admin-section-block h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.75rem;
+}
+
+.admin-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #8C4E26;
+  border-radius: 0.375rem;
+  margin-bottom: 0.75rem;
+  background-color: #D97D4A; /* Even lighter orange for input */
+  color: #FFFFFF;
+}
+.admin-input::placeholder {
+  color: #E0E0E0;
+}
+.admin-input:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #E68A4E;
+}
+
+.admin-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #8C4E26;
+  border-radius: 0.375rem;
+  margin-bottom: 0.75rem;
+  background-color: #D97D4A;
+  color: #FFFFFF;
+  /* For consistent appearance across browsers */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%23FFFFFF%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M5.293%207.293a1%201%200%20011.414%200L10%2010.586l3.293-3.293a1%201%200%20111.414%201.414l-4%204a1%201%200%2001-1.414%200l-4-4a1%201%200%20010-1.414z%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25em auto;
+  padding-right: 2.5rem; /* Make space for the custom arrow */
+}
+.admin-select option {
+  background-color: #B55C29;
+  color: #FFFFFF;
+}
+.admin-select:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #E68A4E;
+}
+
+.admin-button {
+  width: 100%;
+  background-color: #E68A4E; /* Light orange button */
+  color: #FFFFFF;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.2s, transform 0.2s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-weight: 500;
+  cursor: pointer;
+}
+.admin-button:hover {
+  background-color: #F29F6C;
+  transform: scale(1.05);
+}
+
+.admin-divider {
+  margin: 1rem 0;
+  border-top: 2px solid #A0522D;
+}
+
+/* User Log Main Content Area */
+.user-log-main {
+  flex: 1;
+  width: 100%;
+  background-color: #D4AF8B; /* Light brown background */
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  border-radius: 0.75rem;
+  border: 2px solid #A0522D;
+}
+
+.user-log-main h2 { /* Targeting the USER LOG title specifically */
+  text-align: center; /* Center the text */
+  margin-bottom: 1.5rem; /* Add some space below the title */
+  font-size: 2.5rem; /* Example: Adjust font size if needed */
+  font-weight: 800; /* Example: Adjust font weight */
+  color: #7A4B29; /* Example: Adjust color if needed */
+}
+
+
+@media (min-width: 768px) {
+  .user-log-main {
+    width: 66.666667%; /* Approx. 2/3 width */
+  }
+}
+
+.no-users-message {
+  color: #6B7280;
+  font-size: 1.125rem;
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+/* User Cards Grid */
+.user-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjusted min-width for more flexibility */
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) { /* New breakpoint for 3 columns on larger desktops */
+  .user-cards-grid {
+    grid-template-columns: repeat(2, 1fr); /* Forces 3 equal columns */
+  }
+}
+
+/* Individual User Card */
+.user-card {
+  background-color: #E6C6A0; /* Lighter brown for cards */
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #D4AF8B;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #333333;
+}
+
+.user-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #7A4B29;
+  margin-bottom: 1rem;
+}
+
+.user-status-logged-in {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background-color: #D1FAE5;
+  color: #10B981;
+  margin-bottom: 0.75rem;
+}
+
+.status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 0.5rem;
+  background-color: #059669;
+  border-radius: 9999px;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+
+
+.user-status-logged-out {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background-color: #E5E7EB;
+  color: #374151;
+  margin-bottom: 0.75rem;
+}
+
+.user-detail-text {
+  font-size: 0.875rem;
+  color: #4B5563;
+}
+
+.user-detail-amount {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #7A4B29;
+  margin-bottom: 1rem;
+}
+
+.card-button {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-size: 1.125rem;
+  font-weight: 600;
+  transition: background-color 0.2s, transform 0.2s;
+  cursor: pointer;
+  color: #FFFFFF;
+}
+
+.card-button:hover {
+  transform: scale(1.05);
+}
+
+.card-button.logout {
+  background-color: #FF5722; /* Orange for logout */
+}
+.card-button.logout:hover {
+  background-color: #E64A19;
+}
+
+.card-button.login {
+  background-color: #7A4B29; /* Dark brown for login */
+}
+.card-button.login:hover {
+  background-color: #8C5D3A;
+}
+
+.card-button.continue {
+  background-color: #8C5D3A; /* Slightly lighter brown for continue */
+}
+.card-button.continue:hover {
+  background-color: #9E6E4B;
+}
+
+.card-buttons-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 50;
+}
+
+.modal-content {
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  max-width: 28rem;
+  width: 100%;
+  border-top: 4px solid #4F46E5;
+}
+
+.modal-content h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #4F46E5;
+  margin-bottom: 1rem;
+}
+
+.modal-text {
+  font-size: 1.125rem;
+  color: #4B5563;
+  margin-bottom: 0.5rem;
+}
+
+.modal-payment-amount {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #22C55E;
+  margin-bottom: 1.5rem;
+}
+
+.modal-button {
+  width: 100%;
+  background-color: #4F46E5;
+  color: #FFFFFF;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-size: 1.125rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.modal-button:hover {
+  background-color: #4338CA;
+}
+
+/* Confirmation Modal Specific Styles */
+.confirmation-modal-content {
+  border-top-color: #EF4444;
+}
+
+.confirmation-modal-content h2 {
+  color: #EF4444;
+}
+
+.confirmation-modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.confirmation-button-cancel {
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #D1D5DB;
+  color: #4B5563;
+  background-color: #FFFFFF;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.confirmation-button-cancel:hover {
+  background-color: #F3F4F6;
+}
+
+.confirmation-button-confirm {
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #DC2626;
+  color: #FFFFFF;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.confirmation-button-confirm:hover {
+  background-color: #B91C1C;
+}
